@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  close_approach_date: 2024-09-16
+  is_potentially_hazardous: false
+  magnitude: 1.5
+  estimated_diameter: 1.5
+  relative_velocity: 1.5
+  nasa_jpl_url: MyString
+
+two:
+  name: MyString
+  close_approach_date: 2024-09-16
+  is_potentially_hazardous: false
+  magnitude: 1.5
+  estimated_diameter: 1.5
+  relative_velocity: 1.5
+  nasa_jpl_url: MyString

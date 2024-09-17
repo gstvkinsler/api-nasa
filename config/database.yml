@@ -1,0 +1,13 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  user: ubuntu
+  password: 123321
+
+development:
+  <<: *default
+  database: api_nasa_development
+
+  
