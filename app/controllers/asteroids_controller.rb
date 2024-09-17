@@ -1,5 +1,5 @@
 class AsteroidsController < ApplicationController
-  before_action :set_asteroid, only: [:show, :update, :destroy]
+  before_action :set_asteroid, only: [ :show, :update, :destroy ]
 
   # GET /asteroids
   def index
@@ -9,7 +9,7 @@ class AsteroidsController < ApplicationController
     if asteroids.present?
       render json: asteroids, status: :ok
     else
-      render json: { error: 'No asteroids found' }, status: :not_found
+      render json: { error: "No asteroids found" }, status: :not_found
     end
   end
 
@@ -44,7 +44,6 @@ class AsteroidsController < ApplicationController
     head :no_content
   end
 
-  # Chamar a API da NASA e salvar os asteroides no banco de dados
   def save_from_nasa
     service = AsteroidService.new(Rails.application.credentials.nasa_api_key)
     result, status = service.fetch_and_save_asteroids
@@ -52,13 +51,12 @@ class AsteroidsController < ApplicationController
     render json: result, status: status
   end
 
-  # Salvar asteroides diretamente do frontend (se necessário)
   def save
     service = AsteroidService.new(Rails.application.credentials.nasa_api_key)
     asteroids = params[:asteroids]
 
     if asteroids.nil? || !asteroids.is_a?(Array)
-      return render json: { error: 'Invalid data format' }, status: :bad_request
+      return render json: { error: "Invalid data format" }, status: :bad_request
     end
 
     result, status = service.save_asteroids(asteroids)
@@ -71,7 +69,7 @@ class AsteroidsController < ApplicationController
   def set_asteroid
     @asteroid = Asteroid.find(params[:id])
   rescue ActiveRecord::RecordNotFound
-    render json: { error: 'Asteroid not found' }, status: :not_found
+    render json: { error: "Asteroid not found" }, status: :not_found
   end
 
   def asteroid_params

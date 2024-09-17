@@ -10,7 +10,6 @@ class NasaApi
     options = { query: { start_date: start_date, end_date: end_date, api_key: @api_key } }
     response = self.class.get("/neo/rest/v1/feed", options)
 
-    # Retorne a resposta da API ou erro se a resposta não for bem-sucedida
     if response.success?
       return response.parsed_response, :ok
     else

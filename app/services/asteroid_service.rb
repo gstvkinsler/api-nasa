@@ -1,17 +1,15 @@
 class AsteroidService
   include HTTParty
-  base_uri 'https://api.nasa.gov'
+  base_uri "https://api.nasa.gov"
 
   def initialize(api_key)
     @api_key = api_key
   end
 
-  # Método para buscar asteroides salvos no banco de dados
   def fetch_asteroids_from_db
     Asteroid.all
   end
 
-  # Método para chamar a API da NASA e salvar asteroides no banco de dados
   def fetch_and_save_asteroids
     options = { query: { api_key: @api_key } }
     response = self.class.get("/neo/rest/v1/feed", options)
@@ -21,7 +19,6 @@ class AsteroidService
 
       asteroids_data.each do |date, asteroids|
         asteroids.each do |asteroid_data|
-          # Verificar se o asteroide já existe antes de criar um novo registro
           existing_asteroid = Asteroid.find_by(nasa_jpl_url: asteroid_data["nasa_jpl_url"])
 
           unless existing_asteroid
