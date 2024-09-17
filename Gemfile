@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem "httparty", "~> 0.20.0"
+gem "httparty", "~> 0.22.0"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.2.1"
 # Use postgresql as the database for Active Record
